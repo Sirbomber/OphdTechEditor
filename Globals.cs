@@ -38,6 +38,22 @@ namespace OphdTechEdit
             }
         }
 
+        public static void UpdateTechIdReferences(uint previousId, uint newId)
+        {
+            foreach (Category category in Categories)
+            {
+                foreach (Technology technology in category.Techs)
+                {
+                    int techRefIndex = technology.RequiredTechnologies.FindIndex(x => x == previousId);
+
+                    if (techRefIndex != -1)
+                    {
+                        technology.RequiredTechnologies[techRefIndex] = newId;
+                    }
+                }
+            }
+        }
+
         public static bool TechNameInUse(string name)
         {
             foreach (Category category in Categories)

@@ -492,7 +492,9 @@ namespace OphdTechEdit
         {
             if (ListViewTechs.SelectedIndices.Count < 1) { return; }
 
-            (Category, uint) itemTag = ((Category, uint))ListViewTechs.SelectedItems[0].Tag;
+            ListViewItem item = ListViewTechs.SelectedItems[0];
+            (Category, uint) itemTag = ((Category, uint))item.Tag;
+            uint previousTechId = itemTag.Item2;
 
             Technology technology = itemTag.Item1.Techs.Find(x => x.Id == itemTag.Item2);
 
@@ -502,10 +504,15 @@ namespace OphdTechEdit
 
             if (techForm.ShowDialog() == DialogResult.OK)
             {
-                ListViewItem item = ListViewTechs.SelectedItems[0];
-
                 item.Text = technology.Name;
                 item.ImageIndex = Convert.ToInt32(technology.LabType);
+                itemTag.Item2 = technology.Id;
+                item.Tag = itemTag;
+
+                if(previousTechId != technology.Id)
+                {
+                    Globals.UpdateTechIdReferences(previousTechId, technology.Id);
+                }
             }
         }
 
