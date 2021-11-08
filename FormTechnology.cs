@@ -19,6 +19,8 @@ namespace OphdTechEdit
     {
         private Technology technology;
 
+        private string PreviousTechName { get; set; }
+
         public Technology Technology
         {
             get => technology;
@@ -37,6 +39,7 @@ namespace OphdTechEdit
 
         private void TechPropertyChanged()
         {
+            PreviousTechName = technology.Name;
             TextName.Text = technology.Name;
             TextDescription.Text = technology.Description;
             
@@ -65,6 +68,20 @@ namespace OphdTechEdit
 
         private void ButtonSave_Click(object sender, EventArgs e)
         {
+            if (PreviousTechName != TextName.Text && Globals.TechNameInUse(TextName.Text))
+            {
+                _ = MessageBox.Show("Another technology uses that name, please choose another.", "Edit Technology", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogResult = DialogResult.None;
+                return;
+            }
+
+            if (Globals.TechIdInUse(Convert.ToUInt32(NumericTechId.Value), TextName.Text))
+            {
+                _ = MessageBox.Show("TechID in use, please choose another.", "Edit Technology", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogResult = DialogResult.None;
+                return;
+            }
+
             technology.Name = TextName.Text;
             technology.Description = TextDescription.Text;
 
@@ -72,20 +89,6 @@ namespace OphdTechEdit
             technology.Cost = Convert.ToUInt32(NumericCost.Value);
 
             technology.LabType = RadioLabSurface.Checked ? 1u : 0;
-
-            if (Globals.TechNameInUse(technology.Name))
-            {
-                _ = MessageBox.Show("Another technology uses that name, please choose another.", "Name in use", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                DialogResult = DialogResult.None;
-                return;
-            }
-
-            if (Globals.TechIdInUse(technology.Id, technology.Name))
-            {
-                _ = MessageBox.Show("TechID in use, please choose another.", "ID in use", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                DialogResult = DialogResult.None;
-                return;
-            }
         }
 
         private void ButtonAddTech_Click(object sender, EventArgs e)
