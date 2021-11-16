@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -43,15 +44,21 @@ namespace OphdTechEdit
 
         private void OpenTechFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string openDirectory = Properties.Settings.Default.LastOpenDirectory;
+            if (string.IsNullOrEmpty(openDirectory)) { openDirectory = Application.StartupPath; }
             OpenFileDialog openFile = new OpenFileDialog
             {
-                InitialDirectory = Application.StartupPath,
+                InitialDirectory = openDirectory,
                 Filter = "XML files (*.xml)|*.xml",
                 FilterIndex = 2,
                 RestoreDirectory = true
             };
 
             if (openFile.ShowDialog() != DialogResult.OK) { return; }
+
+            FileInfo fileInfo = new FileInfo(openFile.FileName);
+            Properties.Settings.Default.LastOpenDirectory = fileInfo.DirectoryName;
+            Properties.Settings.Default.Save();
 
             Globals.Categories.Clear();
             HideUi();
