@@ -277,6 +277,8 @@ namespace OphdTechEdit
             writer.WriteEndElement();
             writer.WriteEndDocument();
             writer.Close();
+
+            File.AppendAllText(TechFileName, "\n", System.Text.Encoding.ASCII);
         }
 
         private bool ShowSaveAsDialog()
