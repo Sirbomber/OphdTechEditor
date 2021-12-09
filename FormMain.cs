@@ -250,7 +250,8 @@ namespace OphdTechEdit
             {
                 Indent = true,
                 NewLineHandling = NewLineHandling.Entitize,
-                OmitXmlDeclaration = true
+                OmitXmlDeclaration = true,
+                Encoding = System.Text.Encoding.ASCII
             };
 
             XmlWriter writer = XmlWriter.Create(TechFileName, settings);
