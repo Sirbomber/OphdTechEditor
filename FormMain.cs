@@ -37,6 +37,22 @@ namespace OphdTechEdit
             CategoryIconAtlas.Save(Path.GetDirectoryName(TechFileName) + "/categoryicons.png", System.Drawing.Imaging.ImageFormat.Png);
         }
 
+        private void SaveTopicIcons()
+        {
+            if (TopicIconAtlas != null)
+            {
+                TopicIconAtlas.Dispose();
+            }
+
+            TopicIconAtlas = new Bitmap(4096, 4096);
+            Graphics graphics = Graphics.FromImage(TopicIconAtlas);
+            for (int i = 0; i < IconList.Images.Count && i < 1024; ++i)
+            {
+                graphics.DrawImage(IconList.Images[i], (i % 32) * 128, (i / 32) * 128);
+            }
+
+            TopicIconAtlas.Save(Path.GetDirectoryName(TechFileName) + "/topicicons.png", System.Drawing.Imaging.ImageFormat.Png);
+        }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
@@ -576,14 +592,12 @@ namespace OphdTechEdit
             }
 
             WriteTechFile();
-            SaveCategoryIcons();
         }
 
         private void SaveAsTechFile_Click(object sender, EventArgs e)
         {
             _ = ShowSaveAsDialog();
             WriteTechFile();
-            SaveCategoryIcons();
         }
 
         private void NewToolStripMenuItem_Click(object sender, EventArgs e)
@@ -646,6 +660,12 @@ namespace OphdTechEdit
 
             ListViewItem item = ListCategories.SelectedItems[0];
             SetCategoryName(item, false);
+        }
+
+        private void ExportIconsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveCategoryIcons();
+            SaveTopicIcons();
         }
     }
 }
