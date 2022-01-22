@@ -148,7 +148,17 @@ namespace OphdTechEdit
 
         private void ButtonChooseIcon_Click(object sender, EventArgs e)
         {
+            FormChooseTechnologyIcon formChooseIcon = new FormChooseTechnologyIcon()
+            {
+                TechIcons = TopicIcons,
+                SelectionIndex = (int)Technology.IconIndex
+            };
 
+            if(formChooseIcon.ShowDialog() == DialogResult.OK)
+            {
+                Technology.IconIndex = (uint)formChooseIcon.SelectionIndex;
+                TechIcon.Image = TopicIcons.Images[formChooseIcon.SelectionIndex];
+            }
         }
     }
 }
