@@ -164,12 +164,18 @@ namespace OphdTechEdit
                             string techId = reader.GetAttribute("id");
                             string labType = reader.GetAttribute("lab_type");
                             string cost = reader.GetAttribute("cost");
+                            string iconIndex = "0";
+
+                            try { iconIndex = reader.GetAttribute("icon_index"); }
+                            catch { }
+
 
                             Technology technology = new Technology
                             {
                                 Id = Convert.ToUInt32(techId),
                                 LabType = Convert.ToUInt32(labType),
-                                Cost = Convert.ToUInt32(cost)
+                                Cost = Convert.ToUInt32(cost),
+                                IconIndex = Convert.ToUInt32(iconIndex)
                             };
 
                             ParseTech(technology, reader);
@@ -356,6 +362,7 @@ namespace OphdTechEdit
             writer.WriteAttributeString("id", technology.Id.ToString());
             writer.WriteAttributeString("lab_type", technology.LabType.ToString());
             writer.WriteAttributeString("cost", technology.Cost.ToString());
+            writer.WriteAttributeString("icon_index", technology.IconIndex.ToString());
 
             writer.WriteStartElement("name");
             writer.WriteString(technology.Name);
@@ -539,7 +546,7 @@ namespace OphdTechEdit
             foreach (Technology tech in category.Techs)
             {
                 ListViewItem item = ListViewTechs.Items.Add(tech.Name);
-                item.ImageIndex = Convert.ToInt32(tech.LabType);
+                item.ImageIndex = Convert.ToInt32(tech.IconIndex);
 
                 (Category, uint) itemTag = (category, tech.Id);
 
@@ -559,12 +566,16 @@ namespace OphdTechEdit
 
             if (technology == null) { return; }
 
-            FormTechnology techForm = new FormTechnology() { Technology = technology };
+            FormTechnology techForm = new FormTechnology()
+            {
+                TopicIcons = IconList,
+                Technology = technology
+            };
 
             if (techForm.ShowDialog() == DialogResult.OK)
             {
                 item.Text = technology.Name;
-                item.ImageIndex = Convert.ToInt32(technology.LabType);
+                item.ImageIndex = Convert.ToInt32(technology.IconIndex);
                 itemTag.Item2 = technology.Id;
                 item.Tag = itemTag;
 

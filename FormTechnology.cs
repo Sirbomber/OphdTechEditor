@@ -21,6 +21,8 @@ namespace OphdTechEdit
 
         private string PreviousTechName { get; set; }
 
+        public ImageList TopicIcons { get; set; } = new ImageList();
+
         public Technology Technology
         {
             get => technology;
@@ -45,6 +47,8 @@ namespace OphdTechEdit
             
             NumericTechId.Value = Convert.ToDecimal(technology.Id);
             NumericCost.Value = Convert.ToDecimal(technology.Cost);
+
+            TechIcon.Image = TopicIcons.Images[Convert.ToInt32(technology.IconIndex)];
 
             _ = technology.LabType == 0 ? RadioLabUnderground.Checked = true : RadioLabSurface.Checked = true;
 
@@ -140,6 +144,11 @@ namespace OphdTechEdit
                 technology.Effects.Add(addEffect.Effect);
                 _ = ListEffects.Items.Add(addEffect.Effect);
             }
+        }
+
+        private void ButtonChooseIcon_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

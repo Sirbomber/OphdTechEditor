@@ -9,6 +9,7 @@ namespace OphdTechEdit
         public uint Id { get; set; } = 0;
         public uint LabType { get; set; } = 0;
         public uint Cost { get; set; } = 0;
+        public uint IconIndex { get; set; } = 0;
         public List<uint> RequiredTechnologies { get; set; } = new List<uint>();
         public List<Effect> Effects { get; set; } = new List<Effect>();
     }

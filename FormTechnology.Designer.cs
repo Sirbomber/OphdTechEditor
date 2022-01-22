@@ -30,6 +30,8 @@ namespace OphdTechEdit
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ButtonChooseIcon = new System.Windows.Forms.Button();
+            this.TechIcon = new System.Windows.Forms.PictureBox();
             this.TextDescription = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.TextName = new System.Windows.Forms.TextBox();
@@ -52,6 +54,7 @@ namespace OphdTechEdit
             this.ButtonSave = new System.Windows.Forms.Button();
             this.ButtonCancel = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TechIcon)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumericCost)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericTechId)).BeginInit();
@@ -60,16 +63,36 @@ namespace OphdTechEdit
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.ButtonChooseIcon);
+            this.groupBox1.Controls.Add(this.TechIcon);
             this.groupBox1.Controls.Add(this.TextDescription);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.TextName);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(367, 195);
+            this.groupBox1.Size = new System.Drawing.Size(506, 195);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Basic Information";
+            // 
+            // ButtonChooseIcon
+            // 
+            this.ButtonChooseIcon.Location = new System.Drawing.Point(372, 165);
+            this.ButtonChooseIcon.Name = "ButtonChooseIcon";
+            this.ButtonChooseIcon.Size = new System.Drawing.Size(128, 23);
+            this.ButtonChooseIcon.TabIndex = 5;
+            this.ButtonChooseIcon.Text = "Choose Icon...";
+            this.ButtonChooseIcon.UseVisualStyleBackColor = true;
+            this.ButtonChooseIcon.Click += new System.EventHandler(this.ButtonChooseIcon_Click);
+            // 
+            // TechIcon
+            // 
+            this.TechIcon.Location = new System.Drawing.Point(372, 16);
+            this.TechIcon.Name = "TechIcon";
+            this.TechIcon.Size = new System.Drawing.Size(128, 128);
+            this.TechIcon.TabIndex = 4;
+            this.TechIcon.TabStop = false;
             // 
             // TextDescription
             // 
@@ -121,14 +144,14 @@ namespace OphdTechEdit
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Location = new System.Drawing.Point(12, 213);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(367, 184);
+            this.groupBox2.Size = new System.Drawing.Size(506, 150);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Details";
             // 
             // ButtonRemoveTech
             // 
-            this.ButtonRemoveTech.Location = new System.Drawing.Point(299, 138);
+            this.ButtonRemoveTech.Location = new System.Drawing.Point(438, 102);
             this.ButtonRemoveTech.Name = "ButtonRemoveTech";
             this.ButtonRemoveTech.Size = new System.Drawing.Size(62, 23);
             this.ButtonRemoveTech.TabIndex = 9;
@@ -138,7 +161,7 @@ namespace OphdTechEdit
             // 
             // ButtonAddTech
             // 
-            this.ButtonAddTech.Location = new System.Drawing.Point(299, 109);
+            this.ButtonAddTech.Location = new System.Drawing.Point(438, 73);
             this.ButtonAddTech.Name = "ButtonAddTech";
             this.ButtonAddTech.Size = new System.Drawing.Size(62, 23);
             this.ButtonAddTech.TabIndex = 8;
@@ -149,7 +172,7 @@ namespace OphdTechEdit
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 93);
+            this.label5.Location = new System.Drawing.Point(6, 57);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(83, 13);
             this.label5.TabIndex = 7;
@@ -158,17 +181,17 @@ namespace OphdTechEdit
             // ListRequiredTechs
             // 
             this.ListRequiredTechs.FormattingEnabled = true;
-            this.ListRequiredTechs.Location = new System.Drawing.Point(6, 109);
+            this.ListRequiredTechs.Location = new System.Drawing.Point(6, 73);
             this.ListRequiredTechs.Name = "ListRequiredTechs";
             this.ListRequiredTechs.ScrollAlwaysVisible = true;
-            this.ListRequiredTechs.Size = new System.Drawing.Size(287, 69);
+            this.ListRequiredTechs.Size = new System.Drawing.Size(426, 69);
             this.ListRequiredTechs.Sorted = true;
             this.ListRequiredTechs.TabIndex = 6;
             // 
             // RadioLabSurface
             // 
             this.RadioLabSurface.AutoSize = true;
-            this.RadioLabSurface.Location = new System.Drawing.Point(206, 65);
+            this.RadioLabSurface.Location = new System.Drawing.Point(368, 32);
             this.RadioLabSurface.Name = "RadioLabSurface";
             this.RadioLabSurface.Size = new System.Drawing.Size(132, 17);
             this.RadioLabSurface.TabIndex = 5;
@@ -179,7 +202,7 @@ namespace OphdTechEdit
             // 
             this.RadioLabUnderground.AutoSize = true;
             this.RadioLabUnderground.Checked = true;
-            this.RadioLabUnderground.Location = new System.Drawing.Point(6, 65);
+            this.RadioLabUnderground.Location = new System.Drawing.Point(254, 32);
             this.RadioLabUnderground.Name = "RadioLabUnderground";
             this.RadioLabUnderground.Size = new System.Drawing.Size(108, 17);
             this.RadioLabUnderground.TabIndex = 4;
@@ -189,20 +212,20 @@ namespace OphdTechEdit
             // 
             // NumericCost
             // 
-            this.NumericCost.Location = new System.Drawing.Point(206, 32);
+            this.NumericCost.Location = new System.Drawing.Point(112, 32);
             this.NumericCost.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
             this.NumericCost.Name = "NumericCost";
-            this.NumericCost.Size = new System.Drawing.Size(155, 20);
+            this.NumericCost.Size = new System.Drawing.Size(100, 20);
             this.NumericCost.TabIndex = 3;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(203, 16);
+            this.label4.Location = new System.Drawing.Point(109, 16);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 13);
             this.label4.TabIndex = 2;
@@ -217,7 +240,7 @@ namespace OphdTechEdit
             0,
             0});
             this.NumericTechId.Name = "NumericTechId";
-            this.NumericTechId.Size = new System.Drawing.Size(155, 20);
+            this.NumericTechId.Size = new System.Drawing.Size(100, 20);
             this.NumericTechId.TabIndex = 1;
             // 
             // label3
@@ -234,16 +257,16 @@ namespace OphdTechEdit
             this.groupBox3.Controls.Add(this.ButtonRemoveEffect);
             this.groupBox3.Controls.Add(this.ButtonAddEffect);
             this.groupBox3.Controls.Add(this.ListEffects);
-            this.groupBox3.Location = new System.Drawing.Point(12, 403);
+            this.groupBox3.Location = new System.Drawing.Point(12, 369);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(367, 81);
+            this.groupBox3.Size = new System.Drawing.Size(506, 81);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Effects";
             // 
             // ButtonRemoveEffect
             // 
-            this.ButtonRemoveEffect.Location = new System.Drawing.Point(299, 48);
+            this.ButtonRemoveEffect.Location = new System.Drawing.Point(438, 48);
             this.ButtonRemoveEffect.Name = "ButtonRemoveEffect";
             this.ButtonRemoveEffect.Size = new System.Drawing.Size(62, 23);
             this.ButtonRemoveEffect.TabIndex = 12;
@@ -253,7 +276,7 @@ namespace OphdTechEdit
             // 
             // ButtonAddEffect
             // 
-            this.ButtonAddEffect.Location = new System.Drawing.Point(299, 19);
+            this.ButtonAddEffect.Location = new System.Drawing.Point(438, 19);
             this.ButtonAddEffect.Name = "ButtonAddEffect";
             this.ButtonAddEffect.Size = new System.Drawing.Size(62, 23);
             this.ButtonAddEffect.TabIndex = 11;
@@ -267,13 +290,13 @@ namespace OphdTechEdit
             this.ListEffects.Location = new System.Drawing.Point(6, 19);
             this.ListEffects.Name = "ListEffects";
             this.ListEffects.ScrollAlwaysVisible = true;
-            this.ListEffects.Size = new System.Drawing.Size(287, 56);
+            this.ListEffects.Size = new System.Drawing.Size(426, 56);
             this.ListEffects.TabIndex = 10;
             // 
             // ButtonSave
             // 
             this.ButtonSave.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.ButtonSave.Location = new System.Drawing.Point(304, 495);
+            this.ButtonSave.Location = new System.Drawing.Point(442, 456);
             this.ButtonSave.Name = "ButtonSave";
             this.ButtonSave.Size = new System.Drawing.Size(75, 23);
             this.ButtonSave.TabIndex = 3;
@@ -284,7 +307,7 @@ namespace OphdTechEdit
             // ButtonCancel
             // 
             this.ButtonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.ButtonCancel.Location = new System.Drawing.Point(223, 495);
+            this.ButtonCancel.Location = new System.Drawing.Point(361, 456);
             this.ButtonCancel.Name = "ButtonCancel";
             this.ButtonCancel.Size = new System.Drawing.Size(75, 23);
             this.ButtonCancel.TabIndex = 4;
@@ -297,7 +320,7 @@ namespace OphdTechEdit
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.ButtonCancel;
-            this.ClientSize = new System.Drawing.Size(391, 530);
+            this.ClientSize = new System.Drawing.Size(529, 489);
             this.ControlBox = false;
             this.Controls.Add(this.ButtonCancel);
             this.Controls.Add(this.ButtonSave);
@@ -310,6 +333,7 @@ namespace OphdTechEdit
             this.Text = "Edit Technology";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TechIcon)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumericCost)).EndInit();
@@ -343,5 +367,7 @@ namespace OphdTechEdit
         private System.Windows.Forms.Button ButtonSave;
         private System.Windows.Forms.Button ButtonCancel;
         private System.Windows.Forms.RichTextBox TextDescription;
+        private System.Windows.Forms.Button ButtonChooseIcon;
+        private System.Windows.Forms.PictureBox TechIcon;
     }
 }
