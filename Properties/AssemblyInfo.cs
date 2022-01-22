@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("OphdTechEdit")]
-[assembly: AssemblyDescription("Technology editor for OutpostHD.\r\n\r\nIcons provided by:\r\n\r\nhttp://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free")]
+[assembly: AssemblyDescription("Technology editor for OutpostHD.\r\n\r\nIcons made by Freepik (https://www.freepik.com) from www.flaticon.com")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("LairWorks Entertainment")]
 [assembly: AssemblyProduct("OphdTechEditor")]
-[assembly: AssemblyCopyright("Copyright © 2021, LairWorks Entertainment")]
+[assembly: AssemblyCopyright("Copyright © 2021 - 2022, LairWorks Entertainment")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.1.0")]
-[assembly: AssemblyFileVersion("1.0.1.0")]
+[assembly: AssemblyVersion("1.0.2.0")]
+[assembly: AssemblyFileVersion("1.0.2.0")]
