@@ -92,57 +92,57 @@ namespace OphdTechEdit
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.NewToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(157, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // openTechFileToolStripMenuItem
             // 
             this.openTechFileToolStripMenuItem.Name = "openTechFileToolStripMenuItem";
-            this.openTechFileToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.openTechFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openTechFileToolStripMenuItem.Text = "Open Tech File...";
             this.openTechFileToolStripMenuItem.Click += new System.EventHandler(this.OpenTechFileToolStripMenuItem_Click);
             // 
             // CloseTechFile
             // 
             this.CloseTechFile.Name = "CloseTechFile";
-            this.CloseTechFile.Size = new System.Drawing.Size(160, 22);
+            this.CloseTechFile.Size = new System.Drawing.Size(180, 22);
             this.CloseTechFile.Text = "Close";
             this.CloseTechFile.Click += new System.EventHandler(this.CloseTechFile_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(157, 6);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(177, 6);
             // 
             // SaveTechFile
             // 
             this.SaveTechFile.Name = "SaveTechFile";
-            this.SaveTechFile.Size = new System.Drawing.Size(160, 22);
+            this.SaveTechFile.Size = new System.Drawing.Size(180, 22);
             this.SaveTechFile.Text = "Save";
             this.SaveTechFile.Click += new System.EventHandler(this.SaveTechFile_Click);
             // 
             // SaveAsTechFile
             // 
             this.SaveAsTechFile.Name = "SaveAsTechFile";
-            this.SaveAsTechFile.Size = new System.Drawing.Size(160, 22);
+            this.SaveAsTechFile.Size = new System.Drawing.Size(180, 22);
             this.SaveAsTechFile.Text = "Save As...";
             this.SaveAsTechFile.Click += new System.EventHandler(this.SaveAsTechFile_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(157, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -224,7 +224,15 @@ namespace OphdTechEdit
             // 
             this.CategoryIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("CategoryIcons.ImageStream")));
             this.CategoryIcons.TransparentColor = System.Drawing.Color.Transparent;
-            this.CategoryIcons.Images.SetKeyName(0, "category.png");
+            this.CategoryIcons.Images.SetKeyName(0, "astronomy.png");
+            this.CategoryIcons.Images.SetKeyName(1, "biology.png");
+            this.CategoryIcons.Images.SetKeyName(2, "chemistry.png");
+            this.CategoryIcons.Images.SetKeyName(3, "compsci.png");
+            this.CategoryIcons.Images.SetKeyName(4, "geology.png");
+            this.CategoryIcons.Images.SetKeyName(5, "material.png");
+            this.CategoryIcons.Images.SetKeyName(6, "medicine.png");
+            this.CategoryIcons.Images.SetKeyName(7, "physics.png");
+            this.CategoryIcons.Images.SetKeyName(8, "social.png");
             // 
             // ListViewTechs
             // 

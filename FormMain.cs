@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml;
@@ -11,10 +12,31 @@ namespace OphdTechEdit
         private string TechFileName { get; set; }
         private string PreviousItemName { get; set; }
 
+        private Bitmap CategoryIconAtlas { get; set; }
+        private Bitmap TopicIconAtlas { get; set; }
+
         public FormMain()
         {
             InitializeComponent();
         }
+
+        private void SaveCategoryIcons()
+        {
+            if (CategoryIconAtlas != null)
+            {
+                CategoryIconAtlas.Dispose();
+            }
+
+            CategoryIconAtlas = new Bitmap(256, 256);
+            Graphics graphics = Graphics.FromImage(CategoryIconAtlas);
+            for (int i = 0; i < CategoryIcons.Images.Count && i < 16; ++i)
+            {
+                graphics.DrawImage(CategoryIcons.Images[i], (i % 4) * 64, (i / 4) * 64);
+            }
+
+            CategoryIconAtlas.Save(Path.GetDirectoryName(TechFileName) + "/categoryicons.png", System.Drawing.Imaging.ImageFormat.Png);
+        }
+
 
         private void FormMain_Load(object sender, EventArgs e)
         {
@@ -94,11 +116,21 @@ namespace OphdTechEdit
         private void ParseCategories(XmlReader reader)
         {
             string categoryName = reader.GetAttribute("name");
+            int categoryIconIndex = 0;
+
+            try
+            {
+                categoryIconIndex = int.Parse(reader.GetAttribute("icon_index"));
+            }
+            catch { }
 
             ListViewItem categoryItem = ListCategories.Items.Add(categoryName);
-            categoryItem.ImageIndex = 0;
+            categoryItem.ImageIndex = categoryIconIndex;
 
-            Category category = new Category { Name = categoryName };
+            Category category = new Category {
+                Name = categoryName,
+                IconIndex = categoryIconIndex
+            };
 
             Globals.Categories.Add(category);
             ParseTechnologies(category, reader);
@@ -265,6 +297,7 @@ namespace OphdTechEdit
             {
                 writer.WriteStartElement("category");
                 writer.WriteAttributeString("name", category.Name);
+                writer.WriteAttributeString("icon_index", category.IconIndex.ToString());
 
                 foreach (Technology technology in category.Techs)
                 {
@@ -543,12 +576,14 @@ namespace OphdTechEdit
             }
 
             WriteTechFile();
+            SaveCategoryIcons();
         }
 
         private void SaveAsTechFile_Click(object sender, EventArgs e)
         {
             _ = ShowSaveAsDialog();
             WriteTechFile();
+            SaveCategoryIcons();
         }
 
         private void NewToolStripMenuItem_Click(object sender, EventArgs e)
@@ -566,7 +601,9 @@ namespace OphdTechEdit
 
             FormEditCategoryName editCategoryName = new FormEditCategoryName()
             {
-                CategoryName = category.Name
+                CategoryName = category.Name,
+                CategoryImages = CategoryIcons,
+                IconIndex = category.IconIndex
             };
 
             if (forceNameChange)
@@ -581,7 +618,8 @@ namespace OphdTechEdit
                     return;
                 }
 
-                if (Globals.CategoryNameInUse(editCategoryName.CategoryName))
+                if (editCategoryName.CategoryName != category.Name &&
+                    Globals.CategoryNameInUse(editCategoryName.CategoryName))
                 {
                     _ = MessageBox.Show("Category name is already used in another Category. Please choose another name.",
                         "Category Name", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -593,7 +631,10 @@ namespace OphdTechEdit
             }
 
             category.Name = editCategoryName.CategoryName;
+            category.IconIndex = editCategoryName.IconIndex;
+
             item.Text = category.Name;
+            item.ImageIndex = editCategoryName.IconIndex;
         }
 
         private void ListCategories_DoubleClick(object sender, EventArgs e)

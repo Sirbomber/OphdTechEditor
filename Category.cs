@@ -5,6 +5,7 @@ namespace OphdTechEdit
     class Category
     {
         public string Name { get; set; }
+        public int IconIndex { get; set; }
         public List<Technology> Techs { get; set; } = new List<Technology>();
 
         public void AddTechnology(Technology technology)
