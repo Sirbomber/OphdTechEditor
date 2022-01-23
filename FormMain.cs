@@ -482,7 +482,11 @@ namespace OphdTechEdit
             }
             else
             {
-                FormTechnology techForm = new FormTechnology() { Technology = new Technology() };
+                FormTechnology techForm = new FormTechnology()
+                {
+                    TopicIcons = IconList,
+                    Technology = new Technology()
+                };
 
                 if (techForm.ShowDialog() != DialogResult.OK) { return; }
 
