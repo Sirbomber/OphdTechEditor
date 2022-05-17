@@ -69,13 +69,13 @@ namespace OphdTechEdit
             return false;
         }
 
-        public static bool TechIdInUse(uint id, string name)
+        public static bool TechIdInUse(uint id, string name, bool nameChanged)
         {
             foreach (Category category in Categories)
             {
                 Technology tech = category.Techs.Find(x => x.Id == id);
 
-                if (tech != null && tech.Name != name)
+                if (tech != null && tech.Name != name && !nameChanged)
                 {
                     return true;
                 }

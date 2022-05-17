@@ -79,7 +79,7 @@ namespace OphdTechEdit
                 return;
             }
 
-            if (Globals.TechIdInUse(Convert.ToUInt32(NumericTechId.Value), TextName.Text))
+            if (Globals.TechIdInUse(Convert.ToUInt32(NumericTechId.Value), TextName.Text, PreviousTechName != TextName.Text))
             {
                 _ = MessageBox.Show("TechID in use, please choose another.", "Edit Technology", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 DialogResult = DialogResult.None;
