@@ -579,7 +579,7 @@ namespace OphdTechEdit
             if (techForm.ShowDialog() == DialogResult.OK)
             {
                 item.Text = technology.Name;
-                item.ImageIndex = Convert.ToInt32(technology.IconIndex);
+                item.ImageIndex = Convert.ToInt32(techForm.Technology.IconIndex);
                 itemTag.Item2 = technology.Id;
                 item.Tag = itemTag;
 

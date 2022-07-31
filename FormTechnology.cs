@@ -156,7 +156,7 @@ namespace OphdTechEdit
 
             if(formChooseIcon.ShowDialog() == DialogResult.OK)
             {
-                Technology.IconIndex = (uint)formChooseIcon.SelectionIndex;
+                technology.IconIndex = (uint)formChooseIcon.SelectionIndex;
                 TechIcon.Image = TopicIcons.Images[formChooseIcon.SelectionIndex];
             }
         }
