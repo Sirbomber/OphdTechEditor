@@ -550,6 +550,12 @@ namespace OphdTechEdit
             foreach (Technology tech in category.Techs)
             {
                 ListViewItem item = ListViewTechs.Items.Add(tech.Name);
+
+                if(tech.IconIndex > IconList.Images.Count)
+                {
+                    tech.IconIndex = 0;
+                }
+
                 item.ImageIndex = Convert.ToInt32(tech.IconIndex);
 
                 (Category, uint) itemTag = (category, tech.Id);

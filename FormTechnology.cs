@@ -48,7 +48,15 @@ namespace OphdTechEdit
             NumericTechId.Value = Convert.ToDecimal(technology.Id);
             NumericCost.Value = Convert.ToDecimal(technology.Cost);
 
-            TechIcon.Image = TopicIcons.Images[Convert.ToInt32(technology.IconIndex)];
+            try
+            {
+                TechIcon.Image = TopicIcons.Images[Convert.ToInt32(technology.IconIndex)];
+            }
+            catch
+            {
+                TechIcon.Image = TopicIcons.Images[0];
+                technology.IconIndex = 0;
+            }
 
             _ = technology.LabType == 0 ? RadioLabUnderground.Checked = true : RadioLabSurface.Checked = true;
 
