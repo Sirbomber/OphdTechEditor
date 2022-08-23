@@ -48,12 +48,12 @@ namespace OphdTechEdit
             this.NumericTechId = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ButtonEditEffect = new System.Windows.Forms.Button();
             this.ButtonRemoveEffect = new System.Windows.Forms.Button();
             this.ButtonAddEffect = new System.Windows.Forms.Button();
             this.ListEffects = new System.Windows.Forms.ListBox();
             this.ButtonSave = new System.Windows.Forms.Button();
             this.ButtonCancel = new System.Windows.Forms.Button();
-            this.ButtonEditEffect = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TechIcon)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -266,6 +266,16 @@ namespace OphdTechEdit
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Effects";
             // 
+            // ButtonEditEffect
+            // 
+            this.ButtonEditEffect.Location = new System.Drawing.Point(437, 48);
+            this.ButtonEditEffect.Name = "ButtonEditEffect";
+            this.ButtonEditEffect.Size = new System.Drawing.Size(62, 23);
+            this.ButtonEditEffect.TabIndex = 12;
+            this.ButtonEditEffect.Text = "Edit...";
+            this.ButtonEditEffect.UseVisualStyleBackColor = true;
+            this.ButtonEditEffect.Click += new System.EventHandler(this.ButtonEditEffect_Click);
+            // 
             // ButtonRemoveEffect
             // 
             this.ButtonRemoveEffect.Location = new System.Drawing.Point(437, 78);
@@ -315,16 +325,7 @@ namespace OphdTechEdit
             this.ButtonCancel.TabIndex = 4;
             this.ButtonCancel.Text = "Cancel";
             this.ButtonCancel.UseVisualStyleBackColor = true;
-            // 
-            // ButtonEditEffect
-            // 
-            this.ButtonEditEffect.Location = new System.Drawing.Point(437, 48);
-            this.ButtonEditEffect.Name = "ButtonEditEffect";
-            this.ButtonEditEffect.Size = new System.Drawing.Size(62, 23);
-            this.ButtonEditEffect.TabIndex = 12;
-            this.ButtonEditEffect.Text = "Edit...";
-            this.ButtonEditEffect.UseVisualStyleBackColor = true;
-            this.ButtonEditEffect.Click += new System.EventHandler(this.ButtonEditEffect_Click);
+            this.ButtonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
             // 
             // FormTechnology
             // 
