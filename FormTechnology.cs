@@ -168,5 +168,22 @@ namespace OphdTechEdit
                 TechIcon.Image = TopicIcons.Images[formChooseIcon.SelectionIndex];
             }
         }
+
+        private void ButtonEditEffect_Click(object sender, EventArgs e)
+        {
+            Effect selectedItem = (Effect)ListEffects.SelectedItem;
+            if (selectedItem == null) { return; }
+
+            FormAddEffect addEffect = new FormAddEffect(selectedItem);
+
+            if (addEffect.ShowDialog() == DialogResult.OK)
+            {
+                selectedItem = addEffect.Effect;
+                technology.Effects[ListEffects.SelectedIndex] = selectedItem;
+                ListEffects.Items.Insert(ListEffects.SelectedIndex, selectedItem);
+                ListEffects.Items.RemoveAt(ListEffects.SelectedIndex);
+            }
+
+        }
     }
 }
