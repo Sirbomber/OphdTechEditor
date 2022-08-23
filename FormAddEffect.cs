@@ -14,6 +14,33 @@ namespace OphdTechEdit
             InitializeComponent();
         }
 
+        public FormAddEffect(Effect _toEdit)
+        {
+            InitializeComponent();
+            Effect = _toEdit;
+
+            if (Effect.EffectType == Effect.Type.Modifier)
+            {
+                ComboEffectType.Text = "Modifier";
+                foreach (KeyValuePair<Effect.Modifier, string> item in Effect.ModifierToString)
+                {
+                    _ = ComboEffectSubType.Items.Add(item.Value);
+                }
+                ComboEffectSubType.Text = Effect.ModifierToString[Effect.Modifies];
+                TextValue.Text = Convert.ToString(Effect.Value);
+            }
+            else
+            {
+                ComboEffectType.Text = "Unlock";
+                foreach (KeyValuePair<Effect.Unlock, string> item in Effect.UnlockToString)
+                {
+                    _ = ComboEffectSubType.Items.Add(item.Value);
+                }
+                ComboEffectSubType.Text = Effect.UnlockToString[Effect.Unlocks];
+                TextValue.Text = Convert.ToString(Effect.Value);
+            }
+        }
+
         private void TextValue_Enter(object sender, EventArgs e)
         {
             TextValue.BackColor = Control.DefaultBackColor;

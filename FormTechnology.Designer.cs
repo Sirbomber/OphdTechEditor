@@ -48,6 +48,7 @@ namespace OphdTechEdit
             this.NumericTechId = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ButtonEditEffect = new System.Windows.Forms.Button();
             this.ButtonRemoveEffect = new System.Windows.Forms.Button();
             this.ButtonAddEffect = new System.Windows.Forms.Button();
             this.ListEffects = new System.Windows.Forms.ListBox();
@@ -254,29 +255,40 @@ namespace OphdTechEdit
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.ButtonEditEffect);
             this.groupBox3.Controls.Add(this.ButtonRemoveEffect);
             this.groupBox3.Controls.Add(this.ButtonAddEffect);
             this.groupBox3.Controls.Add(this.ListEffects);
             this.groupBox3.Location = new System.Drawing.Point(12, 369);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(506, 81);
+            this.groupBox3.Size = new System.Drawing.Size(506, 107);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Effects";
             // 
+            // ButtonEditEffect
+            // 
+            this.ButtonEditEffect.Location = new System.Drawing.Point(437, 48);
+            this.ButtonEditEffect.Name = "ButtonEditEffect";
+            this.ButtonEditEffect.Size = new System.Drawing.Size(62, 23);
+            this.ButtonEditEffect.TabIndex = 12;
+            this.ButtonEditEffect.Text = "Edit...";
+            this.ButtonEditEffect.UseVisualStyleBackColor = true;
+            this.ButtonEditEffect.Click += new System.EventHandler(this.ButtonEditEffect_Click);
+            // 
             // ButtonRemoveEffect
             // 
-            this.ButtonRemoveEffect.Location = new System.Drawing.Point(438, 48);
+            this.ButtonRemoveEffect.Location = new System.Drawing.Point(437, 78);
             this.ButtonRemoveEffect.Name = "ButtonRemoveEffect";
             this.ButtonRemoveEffect.Size = new System.Drawing.Size(62, 23);
-            this.ButtonRemoveEffect.TabIndex = 12;
+            this.ButtonRemoveEffect.TabIndex = 13;
             this.ButtonRemoveEffect.Text = "Remove";
             this.ButtonRemoveEffect.UseVisualStyleBackColor = true;
             this.ButtonRemoveEffect.Click += new System.EventHandler(this.ButtonRemoveEffect_Click);
             // 
             // ButtonAddEffect
             // 
-            this.ButtonAddEffect.Location = new System.Drawing.Point(438, 19);
+            this.ButtonAddEffect.Location = new System.Drawing.Point(437, 19);
             this.ButtonAddEffect.Name = "ButtonAddEffect";
             this.ButtonAddEffect.Size = new System.Drawing.Size(62, 23);
             this.ButtonAddEffect.TabIndex = 11;
@@ -290,13 +302,13 @@ namespace OphdTechEdit
             this.ListEffects.Location = new System.Drawing.Point(6, 19);
             this.ListEffects.Name = "ListEffects";
             this.ListEffects.ScrollAlwaysVisible = true;
-            this.ListEffects.Size = new System.Drawing.Size(426, 56);
+            this.ListEffects.Size = new System.Drawing.Size(426, 82);
             this.ListEffects.TabIndex = 10;
             // 
             // ButtonSave
             // 
             this.ButtonSave.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.ButtonSave.Location = new System.Drawing.Point(442, 456);
+            this.ButtonSave.Location = new System.Drawing.Point(442, 482);
             this.ButtonSave.Name = "ButtonSave";
             this.ButtonSave.Size = new System.Drawing.Size(75, 23);
             this.ButtonSave.TabIndex = 3;
@@ -307,12 +319,13 @@ namespace OphdTechEdit
             // ButtonCancel
             // 
             this.ButtonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.ButtonCancel.Location = new System.Drawing.Point(361, 456);
+            this.ButtonCancel.Location = new System.Drawing.Point(361, 482);
             this.ButtonCancel.Name = "ButtonCancel";
             this.ButtonCancel.Size = new System.Drawing.Size(75, 23);
             this.ButtonCancel.TabIndex = 4;
             this.ButtonCancel.Text = "Cancel";
             this.ButtonCancel.UseVisualStyleBackColor = true;
+            this.ButtonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
             // 
             // FormTechnology
             // 
@@ -320,7 +333,7 @@ namespace OphdTechEdit
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.ButtonCancel;
-            this.ClientSize = new System.Drawing.Size(529, 489);
+            this.ClientSize = new System.Drawing.Size(529, 515);
             this.ControlBox = false;
             this.Controls.Add(this.ButtonCancel);
             this.Controls.Add(this.ButtonSave);
@@ -369,5 +382,6 @@ namespace OphdTechEdit
         private System.Windows.Forms.RichTextBox TextDescription;
         private System.Windows.Forms.Button ButtonChooseIcon;
         private System.Windows.Forms.PictureBox TechIcon;
+        private System.Windows.Forms.Button ButtonEditEffect;
     }
 }

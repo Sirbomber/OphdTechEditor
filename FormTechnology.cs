@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace OphdTechEdit
 {
@@ -20,6 +21,10 @@ namespace OphdTechEdit
         private Technology technology;
 
         private string PreviousTechName { get; set; }
+        private uint PreviousIconIndex { get; set; }
+        private List<uint> PreviousRequiredTechnologies { get; set; }
+        private List<Effect> PreviousEffects { get; set; }
+
 
         public ImageList TopicIcons { get; set; } = new ImageList();
 
@@ -42,6 +47,9 @@ namespace OphdTechEdit
         private void TechPropertyChanged()
         {
             PreviousTechName = technology.Name;
+            PreviousIconIndex = technology.IconIndex;
+            PreviousRequiredTechnologies = new List<uint>(technology.RequiredTechnologies);
+            PreviousEffects = new List<Effect>(technology.Effects);
             TextName.Text = technology.Name;
             TextDescription.Text = technology.Description;
             
@@ -167,6 +175,32 @@ namespace OphdTechEdit
                 technology.IconIndex = (uint)formChooseIcon.SelectionIndex;
                 TechIcon.Image = TopicIcons.Images[formChooseIcon.SelectionIndex];
             }
+        }
+
+        private void ButtonEditEffect_Click(object sender, EventArgs e)
+        {
+            Effect selectedItem = (Effect)ListEffects.SelectedItem;
+            if (selectedItem == null) { return; }
+
+            FormAddEffect addEffect = new FormAddEffect(selectedItem);
+
+            if (addEffect.ShowDialog() == DialogResult.OK)
+            {
+                selectedItem = addEffect.Effect;
+                technology.Effects[ListEffects.SelectedIndex] = selectedItem;
+                ListEffects.Items.Insert(ListEffects.SelectedIndex, selectedItem);
+                ListEffects.Items.RemoveAt(ListEffects.SelectedIndex);
+            }
+
+        }
+
+        private void ButtonCancel_Click(object sender, EventArgs e)
+        {
+            technology.IconIndex = PreviousIconIndex;
+            technology.RequiredTechnologies.Clear();
+            technology.RequiredTechnologies = new List<uint>(PreviousRequiredTechnologies);
+            technology.Effects.Clear();
+            technology.Effects = new List<Effect>(PreviousEffects);
         }
     }
 }

@@ -49,8 +49,10 @@
             this.ClientSize = new System.Drawing.Size(626, 558);
             this.ControlBox = false;
             this.Controls.Add(this.ListViewTechIcons);
+            this.KeyPreview = true;
             this.Name = "FormChooseTechnologyIcon";
             this.Text = "Choose Technology Icon";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormChooseTechnologyIcon_KeyDown);
             this.ResumeLayout(false);
 
         }
