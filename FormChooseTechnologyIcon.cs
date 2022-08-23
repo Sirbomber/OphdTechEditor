@@ -60,5 +60,17 @@ namespace OphdTechEdit
                 ListViewTechIcons.Items.Add("", i);
             }
         }
+
+        private void FormChooseTechnologyIcon_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                DialogResult = DialogResult.Cancel;
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                DialogResult = DialogResult.OK;
+            }
+        }
     }
 }
