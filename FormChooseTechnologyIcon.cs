@@ -12,7 +12,9 @@ namespace OphdTechEdit
 {
     public partial class FormChooseTechnologyIcon : Form
     {
+        private const string NO_FILTER = "(all)";
         private ImageList techIcons = new ImageList();
+
         public ImageList TechIcons
         {
             get
@@ -31,7 +33,7 @@ namespace OphdTechEdit
         {
             get
             {
-                return ListViewTechIcons.SelectedItems[0].Index;
+                return Convert.ToInt32(ListViewTechIcons.SelectedItems[0].Name);
             }
 
             set
@@ -54,10 +56,20 @@ namespace OphdTechEdit
         private void IconsSet()
         {
             ListViewTechIcons.LargeImageList = techIcons;
+            ComboIconFilter.Items.Add(NO_FILTER);
+            ComboIconFilter.SelectedItem = NO_FILTER;
+            string lastAdded = null;
 
-            for(int i = 0; i < techIcons.Images.Count; i++)
+            for (int i = 0; i < techIcons.Images.Count; i++)
             {
-                ListViewTechIcons.Items.Add("", i);
+                string key = techIcons.Images.Keys[i].ToString();
+                key = key.Split()[0];
+                if (key != lastAdded)
+                {
+                    lastAdded = key;
+                    ComboIconFilter.Items.Add(key);
+                }
+                ListViewTechIcons.Items.Add(Convert.ToString(i), "", i);
             }
         }
 
@@ -70,6 +82,28 @@ namespace OphdTechEdit
             else if (e.KeyCode == Keys.Enter)
             {
                 DialogResult = DialogResult.OK;
+            }
+        }
+
+        private void ComboIconFilter_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            string filter = ComboIconFilter.Text;
+            ListViewTechIcons.Clear();
+            for (int i = 0; i < techIcons.Images.Count; i++)
+            {
+                if (filter == NO_FILTER)
+                {
+                    ListViewTechIcons.Items.Add(Convert.ToString(i), "", i);
+                }
+                else
+                {
+                    string key = techIcons.Images.Keys[i].ToString();
+                    key = key.Split()[0];
+                    if (key == filter)
+                    {
+                        ListViewTechIcons.Items.Add(Convert.ToString(i), "", i);
+                    }
+                }
             }
         }
     }
